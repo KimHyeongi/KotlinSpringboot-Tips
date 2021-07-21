@@ -1,0 +1,14 @@
+ifndef::snippets[]
+:snippets: build/generated-snippets
+endif::[]
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+
+= 선물하기 상품전시 API
+
+include::{snippets}/card-info/curl-request.adoc[]
+

@@ -1,0 +1,16 @@
+server:
+  port: 8090
+spring:
+  application:
+    name: internal-api
+  profiles:
+    group:
+      "local": "persist-local, rest-local, infra-local"
+      "beta": "persist-beta, rest-beta, infra-beta"
+---
+server:
+  port: 8080
+spring:
+  config:
+    activate:
+      on-profile: beta

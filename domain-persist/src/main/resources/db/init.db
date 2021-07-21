@@ -1,0 +1,9 @@
+-- 필요시
+
+CREATE SCHEMA IF NOT EXISTS `githubstudy` DEFAULT CHARACTER SET utf8 ;
+
+CREATE USER IF NOT EXISTS 'githubstudy'@'%' IDENTIFIED BY 'githubstudy' PASSWORD EXPIRE NEVER;
+
+GRANT ALL PRIVILEGES ON `githubstudy`.* TO 'githubstudy'@'%';
+
+flush privileges;

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+    <springProfile name="local,beta">
+        <include resource="org/springframework/boot/logging/logback/base.xml"/>
+        <logger name="org.springframework.web" level="DEBUG"/>
+        <logger name="org.springframework.cloud.sleuth" level="INFO"/>
+        <root level="INFO">
+            <appender-ref ref="CONSOLE"/>
+        </root>
+    </springProfile>
+    <springProfile name="beta">
+        <include resource="org/springframework/boot/logging/logback/base.xml"/>
+        <include resource="logback/application-json-appender.xml"/>
+        <include resource="logback/event-json-appender.xml"/>
+        <logger name="org.springframework.web" level="INFO"/>
+        <logger name="org.springframework.cloud.sleuth" level="INFO"/>
+        <root level="INFO">
+            <appender-ref ref="APPLICATION_JSON"/>
+            <appender-ref ref="CONSOLE"/>
+        </root>
+    </springProfile>
+</configuration>

@@ -1,0 +1,21 @@
+spring:
+  zipkin:
+    locator:
+      discovery:
+        enabled: false
+cloud:
+  aws:
+    region:
+      static: us-east-1 # ap-northeast-2
+      auto: false
+    stack:
+      auto: false
+logging:
+  level:
+    com:
+      amazonaws:
+        util:
+          EC2MetadataUtils: error
+messaging:
+  sqs:
+    sqs-name-event: ""
