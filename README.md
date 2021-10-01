@@ -23,10 +23,8 @@ $> docker ps -a
 ## 비서버 모듈
 | 모듈   |      설명      |
 |----------|:-------------:|
-| domain-infra |  Infra 관련 설정 모듈 (@Enable++) SQS, SNS, Message |
-| domain-persist |  데이터 관리 모듈 ( Entity ) |
-| domain-rest |  rest 관련 모듈 - 내부API 연동 수집 |
-| commons |  유틸리티 클래스, 함수  |
+| domain-model |  전체 레이어 데이터  |
+| domain-service |  데이터 관리 모듈 ( Entity, Repository, Service ) |
 
 ## 서버 모듈
 | 모듈   |      설명      |  서버 |
