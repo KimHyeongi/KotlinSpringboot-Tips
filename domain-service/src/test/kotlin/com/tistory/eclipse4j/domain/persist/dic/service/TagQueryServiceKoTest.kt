@@ -1,15 +1,13 @@
-package com.tistory.eclipse4j.domain.persist.tag.service
+package com.tistory.eclipse4j.domain.persist.dic.service
 
 import com.tistory.eclipse4j.domain.persist.DomainTestAppliation
-import io.kotest.core.annotation.Ignored
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.extensions.spring.SpringExtension
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.data.domain.PageRequest
 
-@Ignored
 @SpringBootTest(classes = [DomainTestAppliation::class])
-class TagQueryServiceKoTest(val service: TagQueryService) : StringSpec() {
+class DicQueryServiceKoTest(val service: DicFindService) : StringSpec() {
 
     override fun extensions() = listOf(SpringExtension)
 

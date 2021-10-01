@@ -1,4 +1,4 @@
-package com.tistory.eclipse4j.domain.persist.card.entity
+package com.tistory.eclipse4j.domain.persist.dic.entity
 
 import com.tistory.eclipse4j.domain.persist.base.entity.AuditingEntity
 import javax.persistence.Column
@@ -9,14 +9,17 @@ import javax.persistence.Id
 import javax.persistence.Table
 
 @Entity
-@Table(name = "card")
-class CardEntity(
+@Table(name = "dic")
+class DicEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     var id: Long? = null,
 
-    @Column(nullable = false, name = "title", length = 250)
-    val title: String
+    @Column(nullable = false, name = "word", length = 150)
+    var word: String,
+
+    @Column(nullable = false, name = "contents", length = 2000)
+    var contents: String
 
 ) : AuditingEntity()

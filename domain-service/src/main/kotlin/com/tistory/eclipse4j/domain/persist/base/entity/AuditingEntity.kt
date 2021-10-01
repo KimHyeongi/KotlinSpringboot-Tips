@@ -14,26 +14,25 @@ import javax.persistence.MappedSuperclass
 @MappedSuperclass
 abstract class AuditingEntity {
 
-    @Column(name = "deleted", nullable = false, columnDefinition = "tinyint(1) comment '삭제여부'")
+    @Column(name = "deleted", nullable = false, columnDefinition = "tinyint(1) not null default 0 comment '삭제여부'")
     var deleted: Boolean? = false
 
     @CreatedDate
-    @Column(nullable = true, columnDefinition = "datetime(6) comment '생성일자'")
-    var createdAt: LocalDateTime? = null
-        protected set
+    @Column(nullable = true, columnDefinition = "datetime(6) not null comment '생성일자'")
+    val createdAt: LocalDateTime? = null
 
     @LastModifiedDate
-    @Column(nullable = true, columnDefinition = "datetime(6) comment '수정일자'")
+    @Column(nullable = true, columnDefinition = "datetime(6) not null comment '수정일자'")
     var modifiedAt: LocalDateTime? = null
         protected set
 
     @CreatedBy
-    @Column(nullable = true, columnDefinition = "varchar(64) comment '생성자'")
+    @Column(nullable = true, columnDefinition = "varchar(64) not null comment '생성자'")
     var createdBy: String? = null
         protected set
 
     @LastModifiedBy
-    @Column(nullable = true, columnDefinition = "varchar(64) comment '수정자'")
+    @Column(nullable = true, columnDefinition = "varchar(64) not null comment '수정자'")
     var modifiedBy: String? = null
         protected set
 }
