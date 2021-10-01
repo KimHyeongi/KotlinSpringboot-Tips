@@ -7,10 +7,8 @@ pluginManagement {
 rootProject.name = "KotlinSpringboot-Tips"
 
 include(
-    "commons",
-    "domain-infra",
-    "domain-persist",
-    "domain-rest",
+    "domain-model",
+    "domain-service",
     "app-api",
     "internal-api"
 )

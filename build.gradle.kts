@@ -44,13 +44,14 @@ configurations {
 
 sonarqube {
     properties {
-        property("sonar.host.url", project.findProperty("sonarHostUrl") ?: "http://")
+        property("sonar.host.url", project.findProperty("sonarHostUrl") ?: "")
         property("sonar.sourceEncoding", "UTF-8")
-        property("sonar.exclusions", "**/*Test*.*,**/Q*.java")
-        property("sonar.cpd.exclusions", "**/*Config.kt,**/*Configuration.kt")
+        property("sonar.exclusions", "**/*Test*.*,**/Q*.java,**/*Repository.kt,**/*Interceptor.kt,**entity/*,**/*Entity.*,**/*Constants.*,**/*Advice.kt")
+        property("sonar.cpd.exclusions", "**/*Config.kt,**/*Configuration.kt,**/*Advice.kt")
         property("sonar.tests", "src/integration-test/kotlin,src/test/kotlin")
         property("sonar.test.inclusions", "**/*Test.kt,**/*TestConfig.kt")
-        property("sonar.coverage.exclusions", "**/*Test*.*,**/Q*.java")
+        property("sonar.coverage.exclusions", "**/*Test*.*,**/Q*.java,**/*Repository.kt,**/*Interceptor.kt,**/*Advice.kt,**entity/*,**/*Entity.*,**/*Constants.*")
+//        property("sonar.qualitygate.wait", "false")
     }
 }
 
@@ -88,9 +89,11 @@ subprojects {
             resources.srcDir(file("src/integration-test/resources"))
         }
     }
+
     val integrationTestImplementation by configurations.getting {
         extendsFrom(configurations.implementation.get(), configurations.testImplementation.get())
     }
+
     configurations {
         "integrationTestRuntimeOnly" {
             extendsFrom(configurations.testRuntimeOnly.get())
@@ -119,7 +122,8 @@ subprojects {
 
     sonarqube {
         properties {
-            property("sonar.coverage.jacoco.xmlReportPaths", "${project.buildDir}/reports/all-test/jacoco.xml")
+            property("sonar.coverage.jacoco.xmlReportPaths", "${project.buildDir}/reports/jacoco/test/jacocoTestReport.xml")
+//            property("sonar.coverage.jacoco.xmlReportPaths", "${project.rootDir}/build/reports/jacoco/jacocoRootReport/jacocoRootReport.xml")
         }
     }
 
@@ -129,8 +133,16 @@ subprojects {
         }
 
         reports {
-            html.isEnabled = true
-            junitXml.isEnabled = true
+            html.required.set(true)
+            junitXml.required.set(true)
+        }
+    }
+
+    tasks.withType<Test> {
+        maxParallelForks = (Runtime.getRuntime().availableProcessors() / 2).takeIf { it > 0 } ?: 1
+        useJUnitPlatform()
+        testLogging {
+            events = setOf(FAILED, PASSED, SKIPPED)
         }
     }
 
@@ -156,11 +168,12 @@ subprojects {
     tasks.jacocoTestReport {
         executionData(fileTree(buildDir).include("/jacoco/*.exec"))
 
+        // /reports/jacoco/test/jacocoTestReport.xml
         reports {
-            xml.isEnabled = true
-            xml.destination = file("$buildDir/reports/all-test/jacoco.xml")
-            html.isEnabled = true
-            html.destination = file("$buildDir/reports/all-test/html")
+            xml.required.set(true)
+            xml.outputLocation.set(file("$buildDir/reports/jacoco/test/jacocoTestReport.xml"))
+            html.required.set(true)
+            html.outputLocation.set(file("$buildDir/reports/jacoco/test/html"))
         }
 
         mustRunAfter("test", "integrationTest")
@@ -169,14 +182,6 @@ subprojects {
     tasks.check {
         dependsOn("integrationTest")
         dependsOn(tasks.jacocoTestReport)
-    }
-
-    tasks.withType<Test> {
-        maxParallelForks = (Runtime.getRuntime().availableProcessors() / 2).takeIf { it > 0 } ?: 1
-        useJUnitPlatform()
-        testLogging {
-            events = setOf(FAILED, PASSED, SKIPPED)
-        }
     }
 
     tasks.withType<KotlinCompile> {
@@ -197,20 +202,26 @@ subprojects {
     allOpen {
         annotation("javax.persistence.Entity")
         annotation("javax.persistence.MappedSuperclass")
+        annotation("javax.persistence.Embeddable")
     }
 
     noArg {
         annotation("javax.persistence.Entity")
         annotation("javax.persistence.MappedSuperclass")
+        annotation("javax.persistence.Embeddable")
     }
 
     dependencies {
         implementation(Libraries.spring_boot_starter)
         implementation(Libraries.kotlin_reflect)
         implementation(Libraries.kotlin_stdlib_jdk8)
-        implementation(Libraries.slf4j_api)
         implementation(Libraries.kassava)
+        implementation(Libraries.slf4j_api)
+        implementation(Libraries.kotlin_logging)
+        implementation(Libraries.logback_classic)
 
+//        testImplementation(Libraries.h2_database)
+//        testImplementation(Libraries.kotest_faker)
         testImplementation(Libraries.kotest_runner_junit5)
         testImplementation(Libraries.kotest_assertions_core)
         testImplementation(Libraries.kotest_assertions_json)
@@ -233,4 +244,22 @@ tasks.jar {
 
 tasks.bootJar {
     enabled = false
+}
+
+task<JacocoReport>("jacocoRootReport") {
+    dependsOn(subprojects.map { it.tasks.withType<JacocoReport>() })
+    sourceDirectories.setFrom(subprojects.map { it.tasks.findByName("jacocoTestReport")!!.property("sourceDirectories") })
+    classDirectories.setFrom(subprojects.map { it.tasks.findByName("jacocoTestReport")!!.property("classDirectories") })
+    executionData.setFrom(
+        project.fileTree(".") {
+            include("**/build/jacoco/jacoco.exec")
+        }
+    )
+    onlyIf {
+        true
+    }
+    reports {
+        xml.required.set(true)
+        html.required.set(true)
+    }
 }

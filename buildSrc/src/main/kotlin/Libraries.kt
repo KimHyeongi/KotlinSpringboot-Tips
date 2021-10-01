@@ -160,9 +160,6 @@ object Libraries {
 }
 
 object Projects {
-    const val domain_infra = ":domain-infra"
-    const val domain_persist = ":domain-persist"
-    const val domain_rest = ":domain-rest"
-    const val commons = ":commons"
-
+    const val domain_model = ":domain-model"
+    const val domain_service = ":domain-service"
 }

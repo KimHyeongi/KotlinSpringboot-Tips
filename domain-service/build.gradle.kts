@@ -3,13 +3,12 @@ plugins {
 }
 
 dependencies {
-    implementation(project(Projects.commons))
+    implementation(project(Projects.domain_model))
     api(Libraries.mariadb_java_client)
 
     api(Libraries.spring_boot_starter_cache)
     api(Libraries.spring_boot_starter_redis)
 
-//    api(Libraries.mysqldb_java_client)
     api(Libraries.mariadb_java_client)
     api(Libraries.kotlin_allopen)
     api(Libraries.kotlin_noarg)
