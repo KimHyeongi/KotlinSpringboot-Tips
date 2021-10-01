@@ -28,6 +28,7 @@ dependencies {
     kapt(Libraries.jakarta_persistence_api)
     kapt(Libraries.jakarta_annotation_api)
     api(Libraries.hibernate_envers)
+    api(Libraries.h2_database)
 }
 
 // flyway {

@@ -1,4 +1,4 @@
-package com.tistory.eclipse4j.app.api.display.response
+package com.tistory.eclipse4j.app.api.response
 
 data class AppApiResponse<T>(
     val timestamp: Long,

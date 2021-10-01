@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service
 @Service
 class DicFindService(val dicRepository: DicRepository) {
 
-    fun findById(id: Long): DicEntity = checkNotNull(dicRepository.findByIdOrNull(id)){"검색된 정보가 없습니다."}
+    fun findById(id: Long): DicEntity = checkNotNull(dicRepository.findByIdOrNull(id)) { "검색된 정보가 없습니다." }
 
     fun findAllPageable(of: PageRequest): Page<DicEntity> {
         return dicRepository.findAll(of)

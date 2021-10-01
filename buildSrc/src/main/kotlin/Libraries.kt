@@ -142,6 +142,7 @@ object Libraries {
     const val aws_java_sdk_sqs = "com.amazonaws:aws-java-sdk-sqs:${Versions.aws_sdk}"
 
     // test
+    const val h2_database = "com.h2database:h2"
     const val kotest_runner_junit5 = "io.kotest:kotest-runner-junit5:${Versions.kotest}"
     const val kotest_assertions_core = "io.kotest:kotest-assertions-core:${Versions.kotest}"
     const val kotest_assertions_json = "io.kotest:kotest-assertions-json:${Versions.kotest}"
