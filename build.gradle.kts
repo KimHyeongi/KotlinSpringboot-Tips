@@ -27,7 +27,7 @@ plugins {
     kotlin("kapt") version Versions.kotlin
     kotlin("plugin.spring") version Versions.kotlin apply false
     kotlin("plugin.jpa") version Versions.kotlin apply false
-
+    id("io.kotest") version "0.3.8"
     idea
     jacoco
 }

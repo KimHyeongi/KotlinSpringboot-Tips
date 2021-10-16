@@ -10,7 +10,7 @@ import javax.persistence.Table
 
 @Entity
 @Table(name = "dic")
-class DicEntity(
+class Dic(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
