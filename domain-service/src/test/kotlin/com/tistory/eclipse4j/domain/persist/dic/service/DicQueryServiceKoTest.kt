@@ -6,7 +6,6 @@ import com.tistory.eclipse4j.domain.persist.dic.mock.MockDic
 import com.tistory.eclipse4j.domain.persist.dic.repository.DicRepository
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.StringSpec
-import io.kotest.extensions.spring.SpringExtension
 import io.kotest.matchers.shouldBe
 import io.mockk.every
 import io.mockk.verify
@@ -35,6 +34,5 @@ class DicQueryServiceKoTest(val sut: DicFindService) : StringSpec() {
             verify(exactly = 1) { dicRepository.findByIdOrNull(any()) }
             result.word shouldBe mockDic.word
         }
-
     }
 }
