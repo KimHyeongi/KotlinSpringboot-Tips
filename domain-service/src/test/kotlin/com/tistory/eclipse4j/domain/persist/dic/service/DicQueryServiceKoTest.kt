@@ -13,7 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.data.repository.findByIdOrNull
 
 @SpringBootTest(classes = [DomainTestAppliation::class])
-class DicQueryServiceKoTest(val sut: DicFindService) : StringSpec() {
+internal class DicQueryServiceKoTest(val sut: DicFindService) : StringSpec() {
 
     @MockkBean
     lateinit var dicRepository: DicRepository

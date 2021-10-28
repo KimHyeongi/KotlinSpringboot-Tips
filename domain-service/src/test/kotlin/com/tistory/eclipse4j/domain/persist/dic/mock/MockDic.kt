@@ -2,7 +2,7 @@ package com.tistory.eclipse4j.domain.persist.dic.mock
 
 import com.tistory.eclipse4j.domain.persist.dic.entity.Dic
 
-object MockDic {
+internal object MockDic {
 
     fun dic(
         id: Long = 1,
