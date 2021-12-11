@@ -16,7 +16,7 @@ dependencies {
     api(Libraries.jackson_databind)
     api(Libraries.jackson_datatype_jdk8)
     api(Libraries.jackson_datatype_jsr310)
-
+    api(Libraries.caffeine)
     api(Libraries.commons_pool2)
 
     api(Libraries.kotlin_logging)

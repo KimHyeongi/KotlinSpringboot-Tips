@@ -43,27 +43,26 @@ internal class RunCatchingService {
 
     private val log = KotlinLogging.logger { }
 
-    fun getAsis() : Int {
+    fun getAsis(): Int {
         val textNumber = TextNumber()
         try {
             return textNumber.getThrow().toInt()
-        }catch (e: RuntimeException){
+        } catch (e: RuntimeException) {
             log.error { "$e" }
             throw RuntimeException()
         }
     }
 
-    fun get0B() : Int {
+    fun get0B(): Int {
         val textNumber = TextNumber()
         return runCatching {
             textNumber.getThrow()
         }.map {
             it.toInt()
         }.getOrThrow()
-
     }
 
-    fun get1B() : Int {
+    fun get1B(): Int {
         val textNumber = TextNumber()
         return runCatching {
             textNumber.getThrow()
@@ -72,10 +71,9 @@ internal class RunCatchingService {
         }.onFailure {
             throw NumberFormatException()
         }.getOrThrow()
-
     }
 
-    fun get2B() : Int {
+    fun get2B(): Int {
         val textNumber = TextNumber()
         return runCatching {
             textNumber.getStringNumber()
@@ -84,16 +82,15 @@ internal class RunCatchingService {
         }.onFailure {
             throw NumberFormatException()
         }.getOrThrow()
-
     }
 }
 
 internal class TextNumber {
     // 임의 Throw
-    fun getThrow() : String {
+    fun getThrow(): String {
         throw RuntimeException()
     }
 
     // 정상반환
-    fun getStringNumber() : String = "1000"
+    fun getStringNumber(): String = "1000"
 }

@@ -4,12 +4,34 @@ spring:
       ddl-auto: create-drop
     show-sql: true
   datasource:
-    url: "jdbc:mysql://localhost:3306/githubstudy"
+    url: "jdbc:mysql://localhost:6095/githubstudy"
     username: githubstudy
     password: githubstudy
     driver-class-name: org.mariadb.jdbc.Driver
   database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
   redis:
+    host: 127.0.0.1
+    port: 6379
+    lettuce:
+      pool:
+        max-active: 15
+        max-idle: 8
+        min-idle: 3
+        max-wait: -1
+      shutdown-timeout: 2000
+    timeout: 3000
+  redis-cached:
+    host: 127.0.0.1
+    port: 6379
+    lettuce:
+      pool:
+        max-active: 15
+        max-idle: 8
+        min-idle: 3
+        max-wait: -1
+      shutdown-timeout: 2000
+    timeout: 3000
+  redis-stored:
     host: 127.0.0.1
     port: 6379
     lettuce:

@@ -1,6 +1,6 @@
 package com.tistory.eclipse4j.domain.persist.dic.mock
 
-import com.tistory.eclipse4j.domain.persist.dic.entity.Dic
+import com.tistory.eclipse4j.domain.persist.db.dic.entity.Dic
 
 internal object MockDic {
 

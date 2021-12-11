@@ -12,9 +12,20 @@ spring:
       hibernate:
         hbm2ddl.import_files_sql_extractor: org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor
         format_sql: true
-  redis:
-    host: ${LOCALHOST_ALIAS:localhost}
-    port: 6035
+  redis-cached:
+    host: 127.0.0.1
+    port: 6379
+    lettuce:
+      pool:
+        max-active: 15
+        max-idle: 8
+        min-idle: 3
+        max-wait: -1
+      shutdown-timeout: 2000
+    timeout: 3000
+  redis-stored:
+    host: 127.0.0.1
+    port: 6379
     lettuce:
       pool:
         max-active: 15

@@ -8,8 +8,8 @@ enum class RedisCacheKeyProperties(val description: String, val ttl: Long, val k
         "KEY",
         0
     ), // second s * m * h
-    cached_tag_id(
-        "태그 캐시",
+    cached_dic_by_id(
+        "사전 캐시",
         60 * 60 * 24L,
         true,
         "KEY",

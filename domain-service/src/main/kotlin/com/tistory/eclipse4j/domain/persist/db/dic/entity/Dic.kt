@@ -1,4 +1,4 @@
-package com.tistory.eclipse4j.domain.persist.dic.entity
+package com.tistory.eclipse4j.domain.persist.db.dic.entity
 
 import com.tistory.eclipse4j.domain.persist.base.entity.AuditingEntity
 import javax.persistence.Column

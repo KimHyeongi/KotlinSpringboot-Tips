@@ -2,14 +2,16 @@ package com.tistory.eclipse4j.domain.persist.config
 
 import org.springframework.boot.autoconfigure.cache.RedisCacheManagerBuilderCustomizer
 import org.springframework.context.annotation.Bean
-import org.springframework.context.annotation.Configuration
 import org.springframework.data.redis.cache.RedisCacheConfiguration
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer
 import org.springframework.data.redis.serializer.RedisSerializationContext.SerializationPair
 import java.time.Duration
 
-@Configuration(proxyBeanMethods = false)
-class CacheRedisConfiguration {
+/**
+ * Application 내 단일 Redis 사용시
+ */
+// @Configuration(proxyBeanMethods = false)
+class CacheRedisSingleConfiguration {
 
     @Bean
     fun redisCacheManagerCustomizer() = RedisCacheManagerBuilderCustomizer { builder ->

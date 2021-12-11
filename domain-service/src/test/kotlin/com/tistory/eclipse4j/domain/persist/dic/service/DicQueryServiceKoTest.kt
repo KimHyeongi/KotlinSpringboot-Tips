@@ -2,8 +2,9 @@ package com.tistory.eclipse4j.domain.persist.dic.service
 
 import com.ninjasquad.springmockk.MockkBean
 import com.tistory.eclipse4j.domain.persist.DomainTestAppliation
+import com.tistory.eclipse4j.domain.persist.db.dic.repository.DicRepository
+import com.tistory.eclipse4j.domain.persist.db.dic.service.DicFindService
 import com.tistory.eclipse4j.domain.persist.dic.mock.MockDic
-import com.tistory.eclipse4j.domain.persist.dic.repository.DicRepository
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
