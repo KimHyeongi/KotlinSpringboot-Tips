@@ -1,12 +1,12 @@
 object BuildPlugins {
     object Versions {
         const val dependency_management = "1.0.11.RELEASE"
-        const val spring_boot = "2.5.5"
+        const val spring_boot = "2.6.0"
         const val spring_cloud = "2020.0.3" // 아직 모든 저장소 동기화 안됨.
 //        const val spring_cloud = "Hoxton.SR11"
-        const val flyway = "7.5.2"
+        const val flyway = "8.0.5"
         const val sonarqube = "3.3"
-        const val ktlint = "10.1.0"
+        const val ktlint = "10.2.0"
         const val node = "3.0.1"
     }
 
@@ -19,22 +19,23 @@ object BuildPlugins {
 }
 
 object Versions {
-    const val kotlin = "1.5.31"
+    const val kotlin = "1.6.0"
     const val spring_boot = BuildPlugins.Versions.spring_boot
     const val spring_cloud = BuildPlugins.Versions.spring_cloud
     const val ktlint = BuildPlugins.Versions.ktlint
     const val kassava = "2.1.0"
 
     const val kotest = "4.6.3"
-    const val kotest_ext_spring = "4.4.3"
+    const val kotest_ext_spring = "4.4.3" // io.kotest
+    const val kotest_extensions_spring = "1.0.1" // io.kotest.extensions
     const val ninja_squad_springmockk = "3.0.1"
-    const val mockk = "1.12.0"
-    const val database_rider = "1.25.0"
+    const val mockk = "1.12.1"
+    const val database_rider = "1.32.0"
 
     const val hibernate_jpa_api = "1.0.2.Final"
     const val querydsl = "5.0.0"
 
-    const val slf4j = "1.7.30"
+    const val slf4j = "1.7.32"
     const val logback_classic = "1.2.3"
     const val logstash_logback_encoder = "6.1"
     const val apache_commons_imaging = "1.0-alpha2"
@@ -42,11 +43,11 @@ object Versions {
     const val swagger = "3.0.0"
 
     const val elasticsearch = "7.9.3"
-    const val resilience4j = "1.7.0"
-    const val okhttp = "4.6.0"
-    const val kotlin_logging = "2.0.10"
+    const val resilience4j = "1.7.1"
+    const val okhttp = "4.9.2"
+    const val kotlin_logging = "2.1.0"
 
-    const val guava = "30.1.1-jre"
+    const val guava = "31.0.1-jre"
     const val aws_sdk = "1.12.21"
 //    const val aws_sdk = "1.11.1005"
 
