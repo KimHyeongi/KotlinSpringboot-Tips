@@ -12,7 +12,6 @@ import org.springframework.data.redis.core.RedisTemplate
 import org.springframework.data.redis.repository.configuration.EnableRedisRepositories
 import java.time.Duration
 
-
 /**
  * Application 여러 Redis 사용시
  * 데이터 저장용 (Spring Data Redis)

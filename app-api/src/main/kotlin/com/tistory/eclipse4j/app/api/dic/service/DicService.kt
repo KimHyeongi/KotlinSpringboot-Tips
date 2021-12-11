@@ -2,7 +2,7 @@ package com.tistory.eclipse4j.app.api.dic.service
 
 import com.tistory.eclipse4j.app.api.dic.data.DicResponse
 import com.tistory.eclipse4j.app.api.dic.mapper.DicMapper
-import com.tistory.eclipse4j.domain.persist.dic.service.DicFindService
+import com.tistory.eclipse4j.domain.persist.db.dic.service.DicFindService
 import mu.KotlinLogging
 import org.springframework.cache.annotation.Cacheable
 import org.springframework.data.domain.Page
