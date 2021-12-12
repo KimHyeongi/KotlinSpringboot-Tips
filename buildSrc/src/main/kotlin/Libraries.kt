@@ -65,6 +65,7 @@ object Libraries {
     const val ktlint_gradle_plugin = "org.jlleitschuh.gradle:ktlint-gradle:${Versions.ktlint}"
     const val kassava = "au.com.console:kassava:${Versions.kassava}"
 
+    const val spring_aspects = "org.springframework:spring-aspects"
     const val spring_boot_dependencyManagement =
         "org.springframework.boot:spring-boot-dependencies:${Versions.spring_boot}"
     const val spring_cloud_dependencyManagement =
@@ -80,7 +81,10 @@ object Libraries {
     const val spring_boot_starter_redis = "org.springframework.boot:spring-boot-starter-data-redis"
     const val spring_boot_starter_actuator = "org.springframework.boot:spring-boot-starter-actuator"
     const val spring_boot_starter_gateway = "org.springframework.cloud:spring-cloud-starter-gateway"
+    const val circuitbreaker_resilience4j = "org.springframework.cloud:spring-cloud-starter-circuitbreaker-resilience4j"
     const val spring_batch_test = "org.springframework.batch:spring-batch-test"
+
+
 
     const val spring_cloud_starter_openfeign = "org.springframework.cloud:spring-cloud-starter-openfeign"
     const val spring_cloud_starter_sleuth = "org.springframework.cloud:spring-cloud-starter-sleuth"

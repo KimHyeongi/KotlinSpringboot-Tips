@@ -8,14 +8,19 @@ dependencies {
 
     api(Libraries.spring_boot_starter_cache)
     api(Libraries.spring_boot_starter_redis)
+    api(Libraries.spring_aspects)
 
-    api(Libraries.mariadb_java_client)
     api(Libraries.kotlin_allopen)
     api(Libraries.kotlin_noarg)
+    api(Libraries.kotlinx_coroutines_core)
+
+    api(Libraries.mariadb_java_client)
+
     api(Libraries.jackson_module_kotlin)
     api(Libraries.jackson_databind)
     api(Libraries.jackson_datatype_jdk8)
     api(Libraries.jackson_datatype_jsr310)
+
     api(Libraries.caffeine)
     api(Libraries.commons_pool2)
 
@@ -29,6 +34,10 @@ dependencies {
     kapt(Libraries.jakarta_annotation_api)
     api(Libraries.hibernate_envers)
     api(Libraries.h2_database)
+
+    // API
+    api(Libraries.circuitbreaker_resilience4j)
+    api(Libraries.spring_boot_starter_webflux)
 }
 
 // flyway {

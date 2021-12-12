@@ -44,3 +44,10 @@ spring:
     timeout: 3000
   cache:
     type: redis
+
+resilience4j:
+  retry:
+    instances:
+      externalAuthApi:
+        max-attempts: 3
+        wait-duration: 5s
