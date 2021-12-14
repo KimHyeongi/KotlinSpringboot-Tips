@@ -1,6 +1,7 @@
 package com.tistory.eclipse4j.domain.persist.db.dic.entity
 
 import com.tistory.eclipse4j.domain.persist.base.entity.AuditingEntity
+import org.hibernate.annotations.Comment
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
@@ -13,7 +14,7 @@ import javax.persistence.Table
 @Table(
     name = "dic",
     indexes = [
-        Index(name = "idx_dic_word", columnList = "word")
+        Index(name = "idx_dic_word", columnList = "word", unique = true)
         // ,Index(name = "idx_dic_multiple_columns", columnList = "word, xxxx")
     ]
 )
@@ -25,9 +26,11 @@ class DicEntity(
     var id: Long? = null,
 
     @Column(nullable = false, name = "word", length = 150)
+    @Comment("단어")
     var word: String,
 
     @Column(nullable = false, name = "contents", length = 2000)
+    @Comment("설명")
     var contents: String
 
 ) : AuditingEntity()

@@ -17,6 +17,8 @@ services:
     mem_reservation: 1g
   redis1:
     container_name: kotlin-spring-boot-study_redis0
+    command: redis-server --port 6379
+    hostname: redis-server
     image: redis:6.2.6
     ports:
       - "6566:6379"
@@ -25,6 +27,8 @@ services:
       - esnet
   redis2:
     container_name: kotlin-spring-boot-study_redis1
+    command: redis-server --port 6379
+    hostname: redis-server
     image: redis:6.2.6
     ports:
       - "6567:6379"

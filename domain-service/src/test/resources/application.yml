@@ -12,9 +12,20 @@ spring:
       hibernate:
         hbm2ddl.import_files_sql_extractor: org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor
         format_sql: true
+  redis:
+    host: 127.0.0.1
+    port: 6566
+    lettuce:
+      pool:
+        max-active: 15
+        max-idle: 8
+        min-idle: 3
+        max-wait: -1
+      shutdown-timeout: 2000
+    timeout: 3000
   redis-cached:
     host: 127.0.0.1
-    port: 6379
+    port: 6566
     lettuce:
       pool:
         max-active: 15
@@ -25,7 +36,7 @@ spring:
     timeout: 3000
   redis-stored:
     host: 127.0.0.1
-    port: 6379
+    port: 6567
     lettuce:
       pool:
         max-active: 15
@@ -36,3 +47,28 @@ spring:
     timeout: 3000
   cache:
     type: redis
+resilience4j:
+  retry:
+    retry-aspect-order: 2
+    instances:
+      externalAuthApi:
+        max-attempts: 3
+        wait-duration: 5s
+        enable-exponential-backoff: true
+        exponential-backoff-multiplier: 2
+        retry-exceptions:
+          - org.springframework.web.client.RestClientException
+  #        ignore-exceptions:
+  #          - com........// Exception
+  circuitbreaker:
+    circuit-breaker-aspect-order: 1
+    instances:
+      externalAuthApiCircuitBreaker:
+        wait-duration-in-open-state: 1s
+        permitted-number-of-calls-in-half-open-state: 3
+        sliding-window-type: count-based
+        sliding-window-size: 5
+        minimum-number-of-calls: 5
+        slow-call-duration-threshold: 10s
+        slow-call-rate-threshold: 60
+        failure-rate-threshold: 60
