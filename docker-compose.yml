@@ -2,9 +2,9 @@ version: '3.1'
 
 services:
   mysql:
-    image: mysql:8.0.25
+    image: mysql:8.0.27
     command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
-    container_name: kotlin-spring-boot-study
+    container_name: kotlin-spring-boot-study_db0
     ports:
     - "3306:3306"
     environment:
@@ -15,30 +15,39 @@ services:
     networks:
     - esnet
     mem_reservation: 1g
-  redis:
-    image: redis:6.2.4
+  redis1:
+    container_name: kotlin-spring-boot-study_redis0
+    image: redis:6.2.6
     ports:
-      - "6379:6379"
+      - "6566:6379"
     mem_reservation: 1g
     networks:
       - esnet
-  localstack:
-    image: localstack/localstack
+  redis2:
+    container_name: kotlin-spring-boot-study_redis1
+    image: redis:6.2.6
     ports:
-      - "4566-4597:4566-4597"
-      - "${PORT_WEB_UI-8080}:${PORT_WEB_UI-8080}"
-    environment:
-      - DEFAULT_REGION=ap-northeast-2
-      - SERVICES=${SERVICES- }
-      - DEBUG=${DEBUG- }
-      - DATA_DIR=${DATA_DIR- }
-      - PORT_WEB_UI=${PORT_WEB_UI- }
-      - LAMBDA_EXECUTOR=${LAMBDA_EXECUTOR- }
-      - KINESIS_ERROR_PROBABILITY=${KINESIS_ERROR_PROBABILITY- }
-      - DOCKER_HOST=unix:///var/run/docker.sock
-    volumes:
-      - "${TMPDIR:-/tmp/localstack}:/tmp/localstack"
-      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "6567:6379"
+    mem_reservation: 1g
+    networks:
+      - esnet
+#  localstack:
+#    image: localstack/localstack
+#    ports:
+#      - "4566-4597:4566-4597"
+#      - "${PORT_WEB_UI-8080}:${PORT_WEB_UI-8080}"
+#    environment:
+#      - DEFAULT_REGION=ap-northeast-2
+#      - SERVICES=${SERVICES- }
+#      - DEBUG=${DEBUG- }
+#      - DATA_DIR=${DATA_DIR- }
+#      - PORT_WEB_UI=${PORT_WEB_UI- }
+#      - LAMBDA_EXECUTOR=${LAMBDA_EXECUTOR- }
+#      - KINESIS_ERROR_PROBABILITY=${KINESIS_ERROR_PROBABILITY- }
+#      - DOCKER_HOST=unix:///var/run/docker.sock
+#    volumes:
+#      - "${TMPDIR:-/tmp/localstack}:/tmp/localstack"
+#      - "/var/run/docker.sock:/var/run/docker.sock"
 volumes:
   mysql_data:
     driver: local

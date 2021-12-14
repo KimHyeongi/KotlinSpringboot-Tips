@@ -1,6 +1,6 @@
 package com.tistory.eclipse4j.domain.persist.dic.mock
 
-import com.tistory.eclipse4j.domain.persist.db.dic.entity.Dic
+import com.tistory.eclipse4j.domain.persist.db.dic.entity.DicEntity
 
 internal object MockDic {
 
@@ -8,7 +8,7 @@ internal object MockDic {
         id: Long = 1,
         word: String = "Dic",
         contents: String = "Contents"
-    ) = Dic(
+    ) = DicEntity(
         id = id, word = word, contents = contents
     )
 }

@@ -13,6 +13,7 @@ dependencies {
     api(Libraries.kotlin_allopen)
     api(Libraries.kotlin_noarg)
     api(Libraries.kotlinx_coroutines_core)
+    api(Libraries.kotlinx_coroutines_reactive)
 
     api(Libraries.mariadb_java_client)
 
@@ -29,9 +30,11 @@ dependencies {
     // JPA/Querydsl 설정
     api(Libraries.spring_boot_starter_data_jpa)
     api(Libraries.querydsl_jpa)
+
     kapt(Libraries.querydsl_apt)
     kapt(Libraries.jakarta_persistence_api)
     kapt(Libraries.jakarta_annotation_api)
+
     api(Libraries.hibernate_envers)
     api(Libraries.h2_database)
 

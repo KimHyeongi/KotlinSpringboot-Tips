@@ -1,4 +1,7 @@
 spring:
+  cloud:
+    compatibility-verifier:
+      enabled: false
   jpa:
     hibernate:
       ddl-auto: create-drop
@@ -44,10 +47,28 @@ spring:
     timeout: 3000
   cache:
     type: redis
-
 resilience4j:
   retry:
+    retry-aspect-order: 2
     instances:
       externalAuthApi:
         max-attempts: 3
         wait-duration: 5s
+        enable-exponential-backoff: true
+        exponential-backoff-multiplier: 2
+        retry-exceptions:
+          - org.springframework.web.client.RestClientException
+#        ignore-exceptions:
+#          - com........// Exception
+  circuitbreaker:
+    circuit-breaker-aspect-order: 1
+    instances:
+      externalAuthApiCircuitBreaker:
+        wait-duration-in-open-state: 1s
+        permitted-number-of-calls-in-half-open-state: 3
+        sliding-window-type: count-based
+        sliding-window-size: 5
+        minimum-number-of-calls: 5
+        slow-call-duration-threshold: 10s
+        slow-call-rate-threshold: 60
+        failure-rate-threshold: 60

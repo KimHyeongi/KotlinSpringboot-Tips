@@ -6,11 +6,19 @@ import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
+import javax.persistence.Index
 import javax.persistence.Table
 
 @Entity
-@Table(name = "dic")
-class Dic(
+@Table(
+    name = "dic",
+    indexes = [
+        Index(name = "idx_dic_word", columnList = "word")
+        // ,Index(name = "idx_dic_multiple_columns", columnList = "word, xxxx")
+    ]
+)
+@org.hibernate.annotations.Table(appliesTo = "dic", comment = "사전")
+class DicEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)

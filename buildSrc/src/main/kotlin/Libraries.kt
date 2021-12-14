@@ -1,9 +1,8 @@
 object BuildPlugins {
     object Versions {
         const val dependency_management = "1.0.11.RELEASE"
-        const val spring_boot = "2.6.0"
-        const val spring_cloud = "2020.0.3" // 아직 모든 저장소 동기화 안됨.
-//        const val spring_cloud = "Hoxton.SR11"
+        const val spring_boot = "2.6.1"
+        const val spring_cloud = "2021.0.0"
         const val flyway = "8.0.5"
         const val sonarqube = "3.3"
         const val ktlint = "10.2.0"
@@ -20,6 +19,7 @@ object BuildPlugins {
 
 object Versions {
     const val kotlin = "1.6.0"
+    const val kotlin_coroutines = "1.6.0-RC2"
     const val spring_boot = BuildPlugins.Versions.spring_boot
     const val spring_cloud = BuildPlugins.Versions.spring_cloud
     const val ktlint = BuildPlugins.Versions.ktlint
@@ -55,16 +55,15 @@ object Versions {
 }
 
 object Libraries {
-    const val kotlin_reflect = "org.jetbrains.kotlin:kotlin-reflect"
-    const val kotlin_stdlib_jdk8 = "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-    const val kotlinx_coroutines_core = "org.jetbrains.kotlinx:kotlinx-coroutines-core"
+    const val kotlin_reflect = "org.jetbrains.kotlin:kotlin-reflect:${Versions.kotlin}"
+    const val kotlin_stdlib_jdk8 = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}"
     const val kotlin_allopen = "org.jetbrains.kotlin:kotlin-allopen:${Versions.kotlin}"
     const val kotlin_noarg = "org.jetbrains.kotlin:kotlin-noarg:${Versions.kotlin}"
-    const val sonarqube_gradle_plugin = "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.7.1"
+    const val kotlinx_coroutines_core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kotlin_coroutines}"
+    const val kotlinx_coroutines_reactive = "org.jetbrains.kotlinx:kotlinx-coroutines-reactive:${Versions.kotlin_coroutines}"
     const val kotlin_gradle_plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
     const val ktlint_gradle_plugin = "org.jlleitschuh.gradle:ktlint-gradle:${Versions.ktlint}"
     const val kassava = "au.com.console:kassava:${Versions.kassava}"
-
     const val spring_aspects = "org.springframework:spring-aspects"
     const val spring_boot_dependencyManagement =
         "org.springframework.boot:spring-boot-dependencies:${Versions.spring_boot}"
@@ -84,8 +83,6 @@ object Libraries {
     const val circuitbreaker_resilience4j = "org.springframework.cloud:spring-cloud-starter-circuitbreaker-resilience4j"
     const val spring_batch_test = "org.springframework.batch:spring-batch-test"
 
-
-
     const val spring_cloud_starter_openfeign = "org.springframework.cloud:spring-cloud-starter-openfeign"
     const val spring_cloud_starter_sleuth = "org.springframework.cloud:spring-cloud-starter-sleuth"
 
@@ -94,6 +91,7 @@ object Libraries {
 
     const val spring_retry = "org.springframework.retry:spring-retry"
 
+    const val sonarqube_gradle_plugin = "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.7.1"
     // java modules
     const val jakarta_persistence_api = "jakarta.persistence:jakarta.persistence-api"
     const val jakarta_annotation_api = "jakarta.annotation:jakarta.annotation-api"
