@@ -24,7 +24,7 @@ class UserInfoClientService(
     private val logger = KotlinLogging.logger {}
 
     @CircuitBreaker(name = "externalAuthApiCircuitBreaker", fallbackMethod = "getRunBlockingUserInfoFallback")
-    @Retry(name = "myRetry")
+    @Retry(name = "externalAuthApiRetry")
     fun getRunBlockingUserInfo(userId: String): UserInfoResponse<UserInfoBody> {
         logger.info { "UserInfoClientService getRunBlockingUserInfo(${userId})" }
         return runBlocking<UserInfoResponse<UserInfoBody>> {

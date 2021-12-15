@@ -52,7 +52,7 @@ resilience4j:
   retry:
     retry-aspect-order: 2
     instances:
-      externalAuthApi:
+      externalAuthApiRetry:
         max-attempts: 3
         wait-duration: 5s
         enable-exponential-backoff: true
