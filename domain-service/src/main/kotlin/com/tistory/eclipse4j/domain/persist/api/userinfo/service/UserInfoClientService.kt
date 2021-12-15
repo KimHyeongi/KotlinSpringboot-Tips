@@ -26,13 +26,14 @@ class UserInfoClientService(
     @CircuitBreaker(name = "externalAuthApiCircuitBreaker", fallbackMethod = "getRunBlockingUserInfoFallback")
     @Retry(name = "myRetry")
     fun getRunBlockingUserInfo(userId: String): UserInfoResponse<UserInfoBody> {
+        logger.info { "UserInfoClientService getRunBlockingUserInfo(${userId})" }
         return runBlocking<UserInfoResponse<UserInfoBody>> {
             getUserInfoByUserId_DispatchersIO(userId)
         }
     }
 
-    fun getRunBlockingUserInfoFallback(userId: String, e: Exception): UserInfoResponse<UserInfoBody> {
-        logger.error { "String : $userId, Exception ${e.message}" }
+    private fun getRunBlockingUserInfoFallback(userId: String, e: Exception): UserInfoResponse<UserInfoBody> {
+        logger.error { "CircuitBreaker Fallback Method  = UserId : $userId, Exception : ${e.message}" }
         return UserInfoResponse(data = UserInfoBody(userId = userId))
     }
 
