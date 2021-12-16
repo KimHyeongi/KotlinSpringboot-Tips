@@ -7,6 +7,7 @@ import com.github.benmanes.caffeine.cache.Caffeine
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.cache.CacheManager
+import org.springframework.cache.annotation.EnableCaching
 import org.springframework.cache.caffeine.CaffeineCache
 import org.springframework.cache.support.SimpleCacheManager
 import org.springframework.context.annotation.Bean
@@ -29,6 +30,7 @@ import java.util.concurrent.TimeUnit
  * Application 여러 Redis 사용시
  * 캐시
  */
+@EnableCaching
 @Configuration(proxyBeanMethods = true)
 class CacheRedisMultipleConfiguration {
 

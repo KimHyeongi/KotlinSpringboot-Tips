@@ -13,4 +13,18 @@ server:
 spring:
   config:
     activate:
+      on-profile: local
+  circuitbreaker:
+    instances:
+      default_circuit_cachedFindById:
+        failure-rate-threshold: 60
+        ignoreExceptions:
+          - java.lang.IllegalStateException
+---
+server:
+  port: 8080
+spring:
+  config:
+    activate:
       on-profile: beta
+---

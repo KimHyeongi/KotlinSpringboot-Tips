@@ -50,7 +50,7 @@ spring:
     type: redis
 resilience4j:
   retry:
-    retry-aspect-order: 2
+    retry-aspect-order: 2   # 서킷 이후 Retry
     instances:
       externalAuthApiRetry:
         max-attempts: 3
@@ -62,7 +62,7 @@ resilience4j:
   #        ignore-exceptions:
   #          - com........// Exception
   circuitbreaker:
-    circuit-breaker-aspect-order: 1
+    circuit-breaker-aspect-order: 1 # 서킷 먼저
     instances:
       externalAuthApiCircuitBreaker:
         wait-duration-in-open-state: 1s
@@ -72,4 +72,4 @@ resilience4j:
         minimum-number-of-calls: 5
         slow-call-duration-threshold: 10s
         slow-call-rate-threshold: 60
-        failure-rate-threshold: 60
+        failure-rate-threshold: 10 # 10%

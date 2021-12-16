@@ -10,6 +10,7 @@ import java.time.Duration
 /**
  * Application 내 단일 Redis 사용시
  */
+// @EnableCaching
 // @Configuration(proxyBeanMethods = false)
 class CacheRedisSingleConfiguration {
 
