@@ -1,12 +1,12 @@
 version: '3.1'
 
 services:
-  mysql:
+  mysql1:
     image: mysql:8.0.27
     command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
-    container_name: kotlin-spring-boot-study_db0
+    container_name: kotlin-spring-boot-study_db1
     ports:
-    - "3306:3306"
+    - "3308:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root
       TZ: "Asia/Seoul"
@@ -14,6 +14,20 @@ services:
     - mysql_data:/var/lib/mysql
     networks:
     - esnet
+    mem_reservation: 1g
+  mysql2:
+    image: mysql:8.0.27
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+    container_name: kotlin-spring-boot-study_db2
+    ports:
+      - "3309:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      TZ: "Asia/Seoul"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - esnet
     mem_reservation: 1g
   redis1:
     container_name: kotlin-spring-boot-study_redis0
