@@ -1,11 +1,11 @@
 object BuildPlugins {
     object Versions {
         const val dependency_management = "1.0.11.RELEASE"
-        const val spring_boot = "2.6.1"
+        const val spring_boot = "2.6.2"
         const val spring_cloud = "2021.0.0"
         const val flyway = "8.0.5"
         const val sonarqube = "3.3"
-        const val ktlint = "10.2.0"
+        const val ktlint = "10.2.1"
         const val node = "3.0.1"
     }
 
@@ -18,34 +18,34 @@ object BuildPlugins {
 }
 
 object Versions {
-    const val kotlin = "1.6.0"
-    const val kotlin_coroutines = "1.6.0-RC2"
+    const val kotlin = "1.6.10"
+    const val kotlin_coroutines = "1.6.0"
     const val spring_boot = BuildPlugins.Versions.spring_boot
     const val spring_cloud = BuildPlugins.Versions.spring_cloud
     const val ktlint = BuildPlugins.Versions.ktlint
     const val kassava = "2.1.0"
 
-    const val kotest = "4.6.3"
+    const val kotest = "5.0.3"
     const val kotest_ext_spring = "4.4.3" // io.kotest
-    const val kotest_extensions_spring = "1.0.1" // io.kotest.extensions
-    const val ninja_squad_springmockk = "3.0.1"
-    const val mockk = "1.12.1"
-    const val database_rider = "1.32.0"
+//    const val kotest_extensions_spring = "1.0.1" // io.kotest.extensions
+    const val ninja_squad_springmockk = "3.1.0"
+    const val mockk = "1.12.2"
+    const val database_rider = "1.32.1"
 
     const val hibernate_jpa_api = "1.0.2.Final"
     const val querydsl = "5.0.0"
 
-    const val slf4j = "1.7.32"
-    const val logback_classic = "1.2.3"
-    const val logstash_logback_encoder = "6.1"
+    const val slf4j = "2.0.0-alpha6"
+    const val logback_classic = "1.3.0-alpha12"
+    const val logstash_logback_encoder = "7.0.1"
     const val apache_commons_imaging = "1.0-alpha2"
 
     const val swagger = "3.0.0"
 
     const val elasticsearch = "7.9.3"
     const val resilience4j = "1.7.1"
-    const val okhttp = "4.9.2"
-    const val kotlin_logging = "2.1.0"
+    const val okhttp = "4.9.3"
+    const val kotlin_logging = "2.1.21"
 
     const val guava = "31.0.1-jre"
     const val aws_sdk = "1.12.21"
@@ -80,16 +80,15 @@ object Libraries {
     const val spring_boot_starter_redis = "org.springframework.boot:spring-boot-starter-data-redis"
     const val spring_boot_starter_actuator = "org.springframework.boot:spring-boot-starter-actuator"
     const val spring_boot_starter_gateway = "org.springframework.cloud:spring-cloud-starter-gateway"
-    const val circuitbreaker_resilience4j = "org.springframework.cloud:spring-cloud-starter-circuitbreaker-resilience4j"
     const val spring_batch_test = "org.springframework.batch:spring-batch-test"
+    const val spring_retry = "org.springframework.retry:spring-retry"
 
+    const val circuitbreaker_resilience4j = "org.springframework.cloud:spring-cloud-starter-circuitbreaker-resilience4j"
     const val spring_cloud_starter_openfeign = "org.springframework.cloud:spring-cloud-starter-openfeign"
     const val spring_cloud_starter_sleuth = "org.springframework.cloud:spring-cloud-starter-sleuth"
-
     const val spring_cloud_starter_aws = "org.springframework.cloud:spring-cloud-starter-aws:${Versions.aws_spring_cloud_stater}"
     const val spring_cloud_starter_aws_messaging = "org.springframework.cloud:spring-cloud-starter-aws-messaging:${Versions.aws_spring_cloud_stater}"
 
-    const val spring_retry = "org.springframework.retry:spring-retry"
 
     const val sonarqube_gradle_plugin = "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.7.1"
     // java modules
@@ -134,7 +133,7 @@ object Libraries {
         "org.elasticsearch.client:elasticsearch-rest-high-level-client:${Versions.elasticsearch}"
 
     const val resilience4j_spring_starter = "io.github.resilience4j:resilience4j-spring-boot2:${Versions.resilience4j}"
-    const val feign_okhttp = "io.github.openfeign:feign-okhttp:11.2"
+    const val feign_okhttp = "io.github.openfeign:feign-okhttp:11.8"
     const val okhttp = "com.squareup.okhttp3:okhttp:${Versions.okhttp}"
     const val guava = "com.google.guava:guava:${Versions.guava}"
 
