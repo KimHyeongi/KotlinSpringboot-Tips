@@ -1,14 +1,4 @@
 object BuildPlugins {
-    object Versions {
-        const val dependency_management = "1.0.11.RELEASE"
-        const val spring_boot = "2.6.2"
-        const val spring_cloud = "2021.0.0"
-        const val flyway = "8.0.5"
-        const val sonarqube = "3.3"
-        const val ktlint = "10.2.1"
-        const val node = "3.0.1"
-    }
-
     const val spring_boot = "org.springframework.boot"
     const val spring_dependency_management = "io.spring.dependency-management"
     const val sonarqube = "org.sonarqube"
@@ -20,37 +10,33 @@ object BuildPlugins {
 object Versions {
     const val kotlin = "1.6.10"
     const val kotlin_coroutines = "1.6.0"
-    const val spring_boot = BuildPlugins.Versions.spring_boot
-    const val spring_cloud = BuildPlugins.Versions.spring_cloud
-    const val ktlint = BuildPlugins.Versions.ktlint
     const val kassava = "2.1.0"
-
+    const val spring_boot = "2.6.4"
+    const val spring_cloud = "2021.0.1"
+    const val flyway = "8.0.5"
+    const val sonarqube = "3.3"
+    const val ktlint = "10.2.1"
+    const val node = "3.0.1"
     const val kotest = "5.0.3"
     const val kotest_ext_spring = "4.4.3" // io.kotest
-//    const val kotest_extensions_spring = "1.0.1" // io.kotest.extensions
+    const val kotest_extensions_spring = "1.1.0" // io.kotest.extensions
     const val ninja_squad_springmockk = "3.1.0"
     const val mockk = "1.12.2"
     const val database_rider = "1.32.1"
-
     const val hibernate_jpa_api = "1.0.2.Final"
     const val querydsl = "5.0.0"
-
+    const val dependency_management = "1.0.11.RELEASE"
     const val slf4j = "2.0.0-alpha6"
     const val logback_classic = "1.3.0-alpha12"
     const val logstash_logback_encoder = "7.0.1"
     const val apache_commons_imaging = "1.0-alpha2"
-
     const val swagger = "3.0.0"
-
     const val elasticsearch = "7.9.3"
     const val resilience4j = "1.7.1"
     const val okhttp = "4.9.3"
     const val kotlin_logging = "2.1.21"
-
     const val guava = "31.0.1-jre"
     const val aws_sdk = "1.12.21"
-//    const val aws_sdk = "1.11.1005"
-
     const val aws_spring_cloud_stater = "2.2.6.RELEASE"
 }
 
@@ -149,7 +135,8 @@ object Libraries {
     const val kotest_assertions_core = "io.kotest:kotest-assertions-core:${Versions.kotest}"
     const val kotest_assertions_json = "io.kotest:kotest-assertions-json:${Versions.kotest}"
     const val kotest_property = "io.kotest:kotest-property:${Versions.kotest}"
-    const val kotest_extensions_spring = "io.kotest:kotest-extensions-spring:${Versions.kotest_ext_spring}"
+    const val kotest_ext_spring = "io.kotest:kotest-extensions-spring:${Versions.kotest_ext_spring}"
+    const val kotest_extensions_spring = "io.kotest.extensions:kotest-extensions-spring:${Versions.kotest_extensions_spring}"
     const val mockk = "io.mockk:mockk:${Versions.mockk}"
     const val ninja_squad_springmockk = "com.ninja-squad:springmockk:${Versions.ninja_squad_springmockk}"
 

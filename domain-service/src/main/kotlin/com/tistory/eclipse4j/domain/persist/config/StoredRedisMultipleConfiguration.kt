@@ -50,8 +50,8 @@ class StoredRedisMultipleConfiguration {
         val poolConfig = GenericObjectPoolConfig<Any?>()
         poolConfig.maxIdle = maxIdle
         poolConfig.minIdle = minIdle
-        poolConfig.maxWaitMillis = maxWait
         poolConfig.maxTotal = maxActive
+        poolConfig.setMaxWait(Duration.ofMillis(maxWait))
         return poolConfig
     }
 

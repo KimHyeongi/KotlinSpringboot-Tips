@@ -17,17 +17,16 @@ buildscript {
 }
 
 plugins {
-    id(BuildPlugins.spring_dependency_management) version BuildPlugins.Versions.dependency_management
-    id(BuildPlugins.spring_boot) version BuildPlugins.Versions.spring_boot
-    id(BuildPlugins.sonarqube) version BuildPlugins.Versions.sonarqube
-    id(BuildPlugins.ktlint) version BuildPlugins.Versions.ktlint
+    id(BuildPlugins.spring_dependency_management) version Versions.dependency_management
+    id(BuildPlugins.spring_boot) version Versions.spring_boot
+    id(BuildPlugins.sonarqube) version Versions.sonarqube
+    id(BuildPlugins.ktlint) version Versions.ktlint
     kotlin("jvm") version Versions.kotlin
     kotlin("plugin.allopen") version Versions.kotlin
     kotlin("plugin.noarg") version Versions.kotlin
     kotlin("kapt") version Versions.kotlin
     kotlin("plugin.spring") version Versions.kotlin apply false
     kotlin("plugin.jpa") version Versions.kotlin apply false
-    id("io.kotest") version "0.3.8"
     idea
     jacoco
 }
@@ -226,7 +225,8 @@ subprojects {
         testImplementation(Libraries.kotest_assertions_core)
         testImplementation(Libraries.kotest_assertions_json)
         testImplementation(Libraries.kotest_property)
-        testImplementation(Libraries.kotest_extensions_spring)
+//        testImplementation(Libraries.kotest_extensions_spring)
+        testImplementation(Libraries.kotest_ext_spring)
         testImplementation(Libraries.mockk)
         testImplementation(Libraries.ninja_squad_springmockk)
         testImplementation(Libraries.spring_boot_starter_test)
